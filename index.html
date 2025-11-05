@@ -1,9 +1,115 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="gtfs.cc">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <title>gtfs.cc</title>
-  </head>
-  <body>
-    <h1>Welcome to gtfs.cc!</h1>
-  </body>
+    <link rel="stylesheet" href="styles.css">
+    <script src="basicscript.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fMZhrib2Bg-4.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2" as="font" type="font/woff2" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=block&subset=latin-ext" rel="stylesheet">
+
+</head>
+<body>
+    <div id="loader-container">
+        <div class="loader"></div>
+    </div>
+
+    <div id="custom-cursor"></div>
+    <div id="page-overlay" class="page-overlay"></div>
+    <div class="connect-section-highlight"></div>
+
+    <header id="top-bar">
+        <div id="logo">gtfs.cc</div>
+        <div class="right-section">
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <span class="lang-separator">|</span>
+                <button class="lang-btn" data-lang="pl">PL</button>
+            </div>
+            <nav class="top-nav">
+                <a href="#top">Home</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <nav class="mobile-nav">
+            <a href="#top" class="mobile-nav-link">Home</a>
+            <a href="#contact" class="mobile-nav-link">Contact</a>
+        </nav>
+    </div>
+
+    <main>
+        <div class="hero-section fade-in">
+            <h1 data-lang-content>Hi, I'm Alex!</h1>
+            <div class="subtitle" data-lang-content>
+                I’ve been passionate about IT since middle school, and my current focus is on developing web pages, apps (using Dart and Flutter), as well as creating GTFS feeds. Feel free to reach out <a href="#contact" style="color: #666">here</a>.
+            </div>
+        </div>
+
+        <div class="about-section slide-up" id="about">
+            <h2 data-lang-content>Page under construction</h2>
+            <p data-lang-content>Thank you for your patience.</p>
+        </div>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h4 data-lang-content>Connect</h4>
+                    <p>Email (temporary): <a href="mailto:koles3520@gmail.com" data-lang-content>koles3520@gmail.com</a></p>
+                    <p>Phone: <a href="tel:+48507049770">+48 507 049 770</a></p>
+                    <p>Discord: <a href="#" data-lang-content>ax7a</a></p>
+                </div>
+                <div class="footer-column">
+                    <h4 data-lang-content>Resources</h4>
+                    <a href="https://github.com/gtfscc/website" data-lang-content>GitHub</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-lang-content>&copy; 2025 Alexander Dubis. All rights reserved.</p>
+                <p data-lang-content>This page is not affiliated with the <a href="https://gtfs.org/">General Transit Feed Specification</a>'s website</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function initMobileMenu() {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const links = document.querySelectorAll('.mobile-nav-link');
+
+            if (btn) {
+                btn.addEventListener('click', function() {
+                    btn.classList.toggle('active');
+                    menu.classList.toggle('active');
+                    document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+                });
+            }
+
+            links.forEach(link => {
+                link.addEventListener('click', function() {
+                    btn.classList.remove('active');
+                    menu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        initMobileMenu();
+    </script>
+</body>
 </html>
