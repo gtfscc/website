@@ -1,115 +1,204 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="gtfs.cc">
-    <link rel="icon" type="image/x-icon" href="/media/favicon.ico">
-    <title>gtfs.cc</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fMZhrib2Bg-4.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2" as="font" type="font/woff2" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=block&subset=latin-ext" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>gtfs.cc</title>
+  
+  <link href="styles.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/media/favicon-teal.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fMZhrib2Bg-4.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2" as="font" type="font/woff2" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=block&subset=latin-ext" rel="stylesheet">
 
+  <meta property="og:title" content="gtfs.cc">
+  <meta property="og:description" content="Strona w trakcie budowy">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gtfs.cc/">
+  <meta property="og:image" content="https://gtfs.cc/og-image-pl.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      color: #1a1a1a;
+      font-family: "Inter", sans-serif;
+    }
+
+    #top-bar {
+      background: #617776;
+    }
+
+    .subtitle {
+      max-width: 700px;
+      line-height: 1.6;
+      font-size: 1.2rem;
+    }
+
+    #logo { color: #fff; }
+
+    main {
+      flex: 1;
+      padding: 120px 40px 80px;
+      max-width: 1200px;
+      margin-inline: auto;
+    }
+
+    h1 { color: #000; }
+    .subtitle { color: #000; }
+
+    #contact { background-color: #000; }
+
+    .footer-columns { color: #fff; }
+    .footer-bottom { color: #fff; }
+
+    .lang-btn { color: #fff; }
+    .lang-separator { color: #fff; }
+
+    a { color: #000; }
+
+    .hero-section { margin-bottom: 20px; }
+
+    .footer-column a:hover { color: #adbebd; }
+
+    /* about section styles below */
+
+    .about-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      color: #000;
+    }
+
+    .about-columns {
+      display: flex;
+      align-items: stretch;
+      gap: 40px;
+    }
+
+    .about-column {
+      flex: 1;
+      padding: 24px 0;
+    }
+
+    .about-column h3 {
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+      color: #000;
+    }
+
+    .about-column p {
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .divider {
+      width: 1px;
+      background-color: #d0d0d0;
+      align-self: stretch;
+    }
+
+    @media (max-width: 768px) {
+      .about-section {
+        padding: 40px 20px;
+      }
+
+      .about-columns {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .divider {
+        width: 100%;
+        height: 1px;
+        background-color: #d0d0d0;
+      }
+
+      .about-column {
+        padding: 10px 0;
+      }
+    }
+
+  </style>
 </head>
 <body>
-    <div id="loader-container">
-        <div class="loader"></div>
-    </div>
-
-    <div id="custom-cursor"></div>
-    <div id="page-overlay" class="page-overlay"></div>
-    <div class="connect-section-highlight"></div>
-
-    <header id="top-bar">
-        <div id="logo">gtfs.cc</div>
-        <div class="right-section">
-            <div class="language-switcher">
-                <button class="lang-btn active" data-lang="en">EN</button>
-                <span class="lang-separator">|</span>
-                <button class="lang-btn" data-lang="pl">PL</button>
-            </div>
-            <nav class="top-nav">
-                <a href="#top">Home</a>
-                <a href="#contact">Contact</a>
-            </nav>
-            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-        </div>
-    </header>
-
-    <div class="mobile-menu" id="mobile-menu">
-        <nav class="mobile-nav">
-            <a href="#top" class="mobile-nav-link">Home</a>
-            <a href="#contact" class="mobile-nav-link">Contact</a>
+  <div id="top-bar">
+    <div id="logo">gtfs.cc</div>
+    <div class="right-section">
+        <nav class="top-nav">
+            <a href="#top" data-lang-content data-en="Home" data-pl="Strona główna">Strona główna</a>
+            <a href="https://feed.gtfs.cc/" data-lang-content data-en="GTFS Feeds" data-pl="Źródła GTFS">Źródła GTFS</a>
         </nav>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        <div class="language-switcher">
+            <button class="lang-btn" data-lang="en">EN</button>
+            <span class="lang-separator">|</span>
+            <button class="lang-btn active" data-lang="pl">PL</button>
+        </div>
     </div>
+  </div>
 
-    <main>
-        <div class="hero-section fade-in">
-            <h1 data-lang-content>Hi, I'm Alex!</h1>
-            <div class="subtitle" data-lang-content>
-                I’ve been passionate about IT since middle school, and my current focus is on developing web pages, apps (using Dart and Flutter), as well as creating GTFS feeds. Feel free to reach out <a href="#contact" style="color: #666">here</a>.
-            </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <nav class="mobile-nav">
+      <a href="#top" class="mobile-nav-link" data-lang-content data-en="Home" data-pl="Strona główna">Strona główna</a>
+      <a href="https://feed.gtfs.cc/" class="mobile-nav-link" data-lang-content data-en="GTFS Feeds" data-pl="Źródła GTFS">Źródła GTFS</a>
+    </nav>
+  </div>
+
+  <main>
+    <div class="hero-section">
+      <h1 data-lang-content
+          data-en="This site is under construction"
+          data-pl="Strona w trakcie budowy">
+        Strona w trakcie budowy
+      </h1>
+    </div>
+    
+    <div class="subtitle">
+      <span data-lang-content
+            data-en="We’re currently working on this website. Check back soon; more content is on the way."
+            data-pl="Obecnie pracujemy nad tą stroną. Prosimy wrócić wkrótce lub zajrzeć do naszych źródeł GTFS. Dziękujemy :3">
+        Obecnie pracujemy nad tą stroną. Prosimy wrócić wkrótce lub zajrzeć do naszych źródeł GTFS. Dziękujemy :3
+      </span>
+    </div>    
+  </main>
+
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-columns">
+        <div class="footer-column">
+            <h4 data-lang-content data-en="Connect" data-pl="Kontakt">Kontakt</h4>
+            <p><span data-lang-content data-en="Email: " data-pl="Email: ">Email: </span><a href="mailto:hello@gtfs.cc">hello@gtfs.cc</a></p>
+            <p><span data-lang-content data-en="Phone: " data-pl="Telefon: ">Telefon: </span><a href="tel:+48507049770">+48 507 049 770</a></p>
+            <p><span data-lang-content data-en="Discord: " data-pl="Discord: ">Discord: </span><a>ax7a</a></p>
         </div>
-
-        <div class="about-section slide-up" id="about">
-            <h2 data-lang-content>Page under construction</h2>
-            <p data-lang-content>Thank you for your patience.</p>
+        <div class="footer-column">
+          <h4 data-lang-content data-en="Resources" data-pl="Zasoby">Zasoby</h4>
+          <a href="https://github.com/gtfscc/website" data-lang-content data-en="GitHub" data-pl="GitHub">GitHub</a>
         </div>
-    </main>
+      </div>
+      <div class="footer-bottom">
+        <p data-lang-content data-en="© 2025 Alexander Dubis. All rights reserved." data-pl="© 2025 Alexander Dubis. Wszelkie prawa zastrzeżone.">© 2025 Alexander Dubis. Wszelkie prawa zastrzeżone.</p>
+      </div>
+    </div>
+  </footer>
 
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-columns">
-                <div class="footer-column">
-                    <h4 data-lang-content>Connect</h4>
-                    <p>Email: <a href="mailto:hello@gtfs.cc" data-lang-content>hello@gtfs.cc</a></p>
-                    <p>Phone: <a href="tel:+48507049770">+48 507 049 770</a></p>
-                    <p>Discord: <a href="#" data-lang-content>ax7a</a></p>
-                </div>
-                <div class="footer-column">
-                    <h4 data-lang-content>Resources</h4>
-                    <a href="https://github.com/gtfscc/website" data-lang-content>GitHub</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p data-lang-content>&copy; 2025 Alexander Dubis. All rights reserved.</p>
-                <p data-lang-content>This page is not affiliated with the <a href="https://gtfs.org/">General Transit Feed Specification</a>'s website</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        function initMobileMenu() {
-            const btn = document.getElementById('mobile-menu-btn');
-            const menu = document.getElementById('mobile-menu');
-            const links = document.querySelectorAll('.mobile-nav-link');
-
-            if (btn) {
-                btn.addEventListener('click', function() {
-                    btn.classList.toggle('active');
-                    menu.classList.toggle('active');
-                    document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
-                });
-            }
-
-            links.forEach(link => {
-                link.addEventListener('click', function() {
-                    btn.classList.remove('active');
-                    menu.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
-            });
-        }
-
-        initMobileMenu();
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>
