@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /secret/
+
+Sitemap: https://gtfs.cc/sitemap.xml
