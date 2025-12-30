@@ -320,6 +320,7 @@
             const value = el.dataset[`lang${lang.charAt(0).toUpperCase() + lang.slice(1)}`];
             if (value) el.textContent = value;
         });
+        updateLinks(lang);
     }
     
     function updateLinks(lang) {
@@ -335,14 +336,21 @@
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const lang = btn.dataset.lang;
-            window.location.href = `${window.location.origin}/?lang=${lang}`;
+            setLanguage(lang);
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const url = new URL(window.location.href);
+            url.searchParams.set('lang', lang);
+            window.history.replaceState({}, '', url.toString());
         });
     });
     
     document.addEventListener('DOMContentLoaded', () => {
         const lang = getQueryLang() || 'pl';
         setLanguage(lang);
-        updateLinks(lang);
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
     });
   </script>
   <script src="script.js"></script>
