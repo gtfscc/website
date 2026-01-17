@@ -317,7 +317,7 @@
            style="margin: 0;">
            © 2025 gtfs.cc; Wszelkie prawa zastrzeżone.
         </p>
-        <div style="font-family: 'new lots', sans-serif; font-weight: bold; font-size: 1.5rem;">>~<</div>
+        <div id="dynamic-footer-text" style="font-family: 'new lots', sans-serif; font-weight: bold; font-size: 1.5rem;"></div>
       </div>
     </div>
   </footer>
@@ -365,6 +365,36 @@
             btn.classList.toggle('active', btn.dataset.lang === lang);
         });
     });
+
+    function UDL() {
+      const el = document.getElementById('dynamic-footer-text');
+      const t = new Date();
+      const m = t.getMonth() + 1;
+      const d = t.getDate();
+      const w = t.getDay();
+      const y = t.getFullYear();
+  
+      const getE = (y) => {
+          const a = y % 19, b = Math.floor(y / 100), c = y % 100,
+                h = (19 * a + b - Math.floor(b / 4) - Math.floor((b - Math.floor((b + 8) / 25) + 1) / 3) + 15) % 30,
+                l = (32 + 2 * (b % 4) + 2 * Math.floor(c / 4) - h - (c % 4)) % 7,
+                mo = Math.floor((a + 11 * h + 22 * l) / 451);
+          return new Date(y, Math.floor((h + l - 7 * mo + 114) / 31) - 1, ((h + l - 7 * mo + 114) % 31) + 1);
+      };
+  
+      const e = getE(y);
+      const em = new Date(e); em.setDate(e.getDate() + 1);
+      const cc = new Date(e); cc.setDate(e.getDate() + 60);
+      
+      const isM = [e, em, cc].some(i => i.toDateString() === t.toDateString());
+      const isF = ['1-1','1-6','5-1','5-3','8-15','11-1','11-11','12-25','12-26'].includes(`${m}-${d}`);
+      
+      const isV = (w === 0 || w === 6) || (m === 7 || m === 8) || (m === 5 && d <= 9) || isF || isM;
+  
+      el.textContent = isV ? '>w<' : 'gtfs.cc';
+  }
+  
+  UDL();
   </script>
   <script src="script.js"></script>
 </body>
