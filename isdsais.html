@@ -3,17 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Is staszekdlastaszica.org AI slop?</title>
+    <title>Is StaszekDlaStaszica.org AI Slop? (ISDSAIS)</title>
     <style>
         html, body {
             margin-left: 30px;
             margin-right: 30px;
-            margin-top: 150px;
-        }
-        body {
+            margin-top: 120px;
             align-items: center;
             justify-content: center;
         }
+
         h1 {
             font-family: Arial, sans-serif;
             font-weight: bold;
@@ -21,16 +20,48 @@
             text-align: center;
             margin-bottom: 30px;
         }
+
         h3 {
             font-family: Arial, sans-serif;
             font-weight: normal;
             font-size: 30px;
             text-align: center;
         }
+
+        .gray {
+            color: #999999;
+        }
     </style>
 </head>
 <body>
     <h1>Yes.</h1>
-    <h3>(staszekdlastaszica.org is AI slop)</h3>
+    <h3>staszekdlastaszica.org is ai slop >:3</h3>
+    <h3>last time the site was slop-free: <span id="timer" class="gray">idk man</span></h3>
+
+    <script>
+        (function () {
+            const ce = new Date("2026-02-06T10:05:00+01:00");
+            const el = document.getElementById('timer');
+
+            function update() {
+                const ob = new Date();
+                let r = Math.floor((ob - ce) / 1000);
+                
+                const d = Math.floor(r / 86400);
+                r %= 86400;
+
+                const h = Math.floor(r / 3600);
+                r %= 3600;
+
+                const m = Math.floor(r / 60);
+                const s = r % 60;
+
+                el.textContent = `${d} days ${h} hours ${m} minutes ${s} seconds`;
+            }
+
+            update();
+            setInterval(update, 1000);
+        })();
+    </script>
 </body>
 </html>
